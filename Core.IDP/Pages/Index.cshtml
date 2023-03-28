@@ -1,0 +1,38 @@
+﻿@page "/"
+
+@if ( User != null && User.Identity is { IsAuthenticated: true } )
+{
+    <h1>YOU did it</h1>
+
+}
+
+@if ( User != null && User.Identity is { IsAuthenticated: true } )
+{
+
+    var userName = User.Identity.Name;
+
+    //var issued = User.Claims.Properties[".issued"];
+
+    //var expires = User.Identities..Claims [ ".expires" ];
+    <div>
+        <p>You are signed in as</p>
+        <h2>@userName</h2>
+        <hr />
+        <dl>
+            <dt>Issued</dt>
+            <dd>issued</dd>
+            <dt>Expires</dt>
+            <dd>expires</dd>
+        </dl>
+        <hr />
+        <p><a class="btn btn-dark" href="logout" >Sign out</a></p>
+</div>
+}
+
+@if ( User != null && User.Identity is { IsAuthenticated: false } )
+{
+    <div>
+        <p>You are not signed in</p>
+        <p><a class="btn btn-sm btn-dark" href="login" >Sign in</a></p>
+    </div>
+}

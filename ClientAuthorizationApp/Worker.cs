@@ -1,0 +1,30 @@
+﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+
+namespace ClientApp;
+
+public class Worker : IHostedService
+{
+    private readonly IServiceProvider _provider;
+
+    public Worker(IServiceProvider provider)
+        => _provider = provider;
+
+    public async Task StartAsync(CancellationToken cancellationToken)
+    {
+        using var scope = _provider.CreateScope();
+
+        var context = scope.ServiceProvider.GetRequiredService<DbContext>();
+
+        var connStr = context.Database.GetDbConnection ().ConnectionString;
+
+
+        await context.Database.EnsureCreatedAsync();
+    }
+
+    public Task StopAsync(CancellationToken cancellationToken) => Task.CompletedTask;
+}

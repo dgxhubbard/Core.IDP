@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Poo</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Poo.styles.css" asp-append-version="true" />
+</head>
+<body>
+
+
+<div class="nav-page">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+        <a href="~/" class="navbar-brand">
+            <img src="graphics/Gages.gif" margin-left="10" height="35" width="35" class="icon-banner">
+            Core Identity Provider
+        </a>
+
+
+    </nav>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+</div>
+
+</body>
+</html>
