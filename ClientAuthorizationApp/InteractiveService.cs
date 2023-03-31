@@ -49,9 +49,6 @@ public class InteractiveService : BackgroundService
 
             token = response.AccessToken;
 
-
-            //Console.WriteLine("Response from Api1: {0}", await GetResourceFromApi1Async(response.AccessToken, stoppingToken));
-            //Console.WriteLine("Response from Api2: {0}", await GetResourceFromApi2Async(response.AccessToken, stoppingToken));
         }
 
         catch (OperationCanceledException)
@@ -68,45 +65,6 @@ public class InteractiveService : BackgroundService
         {
             Console.WriteLine("An error occurred while trying to authenticate the user.");
         }
-
-        /*
-
-        static async Task<string> GetResourceFromApi1Async(string token, CancellationToken cancellationToken)
-        {
-            using var client = new HttpClient();
-
-            using var request = new HttpRequestMessage(HttpMethod.Get, "https://localhost:44342/api");
-            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
-
-            using var response = await client.SendAsync(request, cancellationToken);
-            if (response.StatusCode is HttpStatusCode.Forbidden or HttpStatusCode.Unauthorized)
-            {
-                return "The user represented by the access token is not allowed to access Api1.";
-            }
-
-            response.EnsureSuccessStatusCode();
-
-            return await response.Content.ReadAsStringAsync(cancellationToken);
-        }
-
-        static async Task<string> GetResourceFromApi2Async(string token, CancellationToken cancellationToken)
-        {
-            using var client = new HttpClient();
-
-            using var request = new HttpRequestMessage(HttpMethod.Get, "https://localhost:44379/api");
-            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
-
-            using var response = await client.SendAsync(request, cancellationToken);
-            if (response.StatusCode is HttpStatusCode.Forbidden or HttpStatusCode.Unauthorized)
-            {
-                return "The user represented by the access token is not allowed to access Api2.";
-            }
-
-            response.EnsureSuccessStatusCode();
-
-            return await response.Content.ReadAsStringAsync(cancellationToken);
-        }
-        */
 
     }
 }

@@ -10,7 +10,6 @@ using OpenIddict.Client;
 
 
 
-using Core.IDP.Shared.Models;
 
 
 namespace ClientApp
